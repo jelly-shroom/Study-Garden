@@ -62,21 +62,4 @@ public class CurrencyHelper : MonoBehaviour, IDataPersistence
         Debug.Log("Currency: " + currencyCount[0].GetComponent<Currency>().counter);
     }
 
-    public void Purchase()
-    {
-        //cannot purchase if not enough currency
-        // if (currencyCount[0].GetComponent<Currency>().counter <= itemCost)
-        // {
-        //     return;
-        // }
-        // else
-        // {
-        //     currencyCount[0].GetComponent<Currency>().counter -= itemCost;
-        //     // foreach (GameObject currency in currencyCount)
-        //     // {
-        //     //     currency.GetComponent<Currency>().counter -= itemCost;
-        //     // }
-
-        // }
-    }
 }

@@ -1897,15 +1897,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 247195709}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 247195709}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: EnabledItems
+      value: PurchaseInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -1998,6 +2010,10 @@ PrefabInstance:
     - target: {fileID: 5712083275107678804, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764993849745912908, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: itemCost
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7024742452779377310, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: _gameObj
@@ -4079,7 +4095,7 @@ GameObject:
   - component: {fileID: 1072624676}
   m_Layer: 5
   m_Name: currencyAmount_text
-  m_TagString: Untagged
+  m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4230,7 +4246,7 @@ GameObject:
   - component: {fileID: 1090870671}
   m_Layer: 5
   m_Name: currencyAmount_text (shop)
-  m_TagString: Untagged
+  m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5649,12 +5665,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1924082183}
     m_Modifications:
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 99187541}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 99187541}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: EnabledItems
+      value: PurchaseInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4113418266314803562, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_Name
@@ -5739,6 +5771,10 @@ PrefabInstance:
     - target: {fileID: 5712083275107678804, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764993849745912908, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: itemCost
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7024742452779377310, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: _gameObj
@@ -8899,15 +8935,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2291613422095192920}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2291613422095192920}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: EnabledItems
+      value: PurchaseInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 757512314326325745, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -9000,6 +9048,10 @@ PrefabInstance:
     - target: {fileID: 5712083275107678804, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764993849745912908, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: itemCost
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7024742452779377310, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: _gameObj

@@ -8,6 +8,8 @@ TagManager:
   - Task
   - EditMenu
   - Spawn
+  - Plant
+  - Currency
   layers:
   - Default
   - TransparentFX
