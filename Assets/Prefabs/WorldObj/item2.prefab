@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 8800490163250034426}
   - component: {fileID: 1377892452512057129}
   m_Layer: 0
-  m_Name: item2
+  m_Name: Item2
   m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   confirmButton: {fileID: 6099006622461991724}
   deleteButton: {fileID: 5712606548729730669}
+  plantCost: 7
 --- !u!65 &1377892452512057129
 BoxCollider:
   m_ObjectHideFlags: 0

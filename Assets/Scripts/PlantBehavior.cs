@@ -18,7 +18,7 @@ public class PlantBehavior : MonoBehaviour
     private Ray _ray;
     private RaycastHit _hit;
 
-    
+    public int plantCost;
 
     void Start()
     {
@@ -30,18 +30,23 @@ public class PlantBehavior : MonoBehaviour
 
         position = gameObject.transform.position;
 
+        //set plantCost equal to the cost in the CurrencyHelper script
+        // plantCost = GameObject.Find("DataPersistenceManager").GetComponent<CurrencyHelper>().itemCost;
+
         if (editGardenMenu.activeSelf)
         {
             editMode = true;
             confirmButton.SetActive(true);
             deleteButton.SetActive(true);
-        } else {
+        }
+        else
+        {
             editMode = false;
             confirmButton.SetActive(false);
             deleteButton.SetActive(false);
         }
     }
-    
+
     void Update()
     {
         if (editMode == true)
@@ -50,13 +55,20 @@ public class PlantBehavior : MonoBehaviour
             var oneTime = false;
 
             //moving obj and positioning
-            if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
                 position += Vector3.right;
-            } if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
                 position += Vector3.left;
-            } if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
                 position += Vector3.forward;
-            } if  (Input.GetKeyDown(KeyCode.DownArrow)) {
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
                 position -= Vector3.forward;
             }
 

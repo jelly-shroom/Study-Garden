@@ -7,8 +7,7 @@ public class CurrencyHelper : MonoBehaviour, IDataPersistence
 {
     //task completion
     public int currencyGain = 2;
-    public GameObject currencyCount;
-    private GameObject currencyCountShop;
+    public GameObject[] currencyCount;
 
     //purchases
     public int itemCost;
@@ -16,35 +15,68 @@ public class CurrencyHelper : MonoBehaviour, IDataPersistence
 
     void Start()
     {
-        currencyCount = GameObject.Find("currencyAmount_text");
-        currencyCountShop = GameObject.Find("currencyAmount_text (shop)");
+        currencyCount = GameObject.FindGameObjectsWithTag("Currency");
 
+        string plantName = this.gameObject.name.Replace("_shop", string.Empty);
+        Debug.Log("Plant Name: " + plantName);
+
+        // itemCost = GameObject.Find(plantName).GetComponent<PlantBehavior>().plantCost;
+        itemCost = GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plantPrefabList.Find(obj => obj.name == plantName).GetComponent<PlantBehavior>().plantCost;
         itemCost_text.text = "" + itemCost;
+    }
+
+    void Update()
+    {
+        //all objects in currencyCount array should have the same counter
+        foreach (GameObject currency in currencyCount)
+        {
+            currency.GetComponent<Currency>().counter = currencyCount[0].GetComponent<Currency>().counter;
+        }
+
+        //count cannot go below 0
+        if (currencyCount[0].GetComponent<Currency>().counter < 0)
+        {
+            currencyCount[0].GetComponent<Currency>().counter = 0;
+        }
     }
 
 
 
     public void LoadData(GameData data)
     {
-        currencyCount.GetComponent<Currency>().counter = data.currencyCount;
+        foreach (GameObject currency in currencyCount)
+        {
+            currency.GetComponent<Currency>().counter = data.currencyCount;
+        }
     }
 
     public void SaveData(GameData data)
     {
-        data.currencyCount = currencyCount.GetComponent<Currency>().counter;
+        data.currencyCount = currencyCount[0].GetComponent<Currency>().counter;
     }
 
     public void CountPoints()
     {
-        currencyCount.GetComponent<Currency>().counter += currencyGain;
-        currencyCountShop.GetComponent<Currency>().counter += currencyGain;
+        currencyCount[0].GetComponent<Currency>().counter += currencyGain;
 
-        Debug.Log("Currency: " + currencyCount.GetComponent<Currency>().counter);
+        Debug.Log("Currency: " + currencyCount[0].GetComponent<Currency>().counter);
     }
 
     public void Purchase()
     {
-        currencyCount.GetComponent<Currency>().counter -= itemCost;
-        currencyCountShop.GetComponent<Currency>().counter -= itemCost;
+        //cannot purchase if not enough currency
+        // if (currencyCount[0].GetComponent<Currency>().counter <= itemCost)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        //     currencyCount[0].GetComponent<Currency>().counter -= itemCost;
+        //     // foreach (GameObject currency in currencyCount)
+        //     // {
+        //     //     currency.GetComponent<Currency>().counter -= itemCost;
+        //     // }
+
+        // }
     }
 }

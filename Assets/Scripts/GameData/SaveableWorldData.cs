@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Plant 
+public class Plant
 {
     public Vector3 position;
     public string name;
-
-    public Plant(string name, Vector3 position) 
+    // [SerializeField] public int cost;
+    public Plant(string name, Vector3 position)
     {
         this.name = name;
         this.position = position;
     }
+
 }
 
 
@@ -22,14 +23,14 @@ public class SaveableWorldData : MonoBehaviour, IDataPersistence
     public List<GameObject> plantPrefabList;
     public List<Plant> plants;
 
-    public GameObject getPrefabForName(string name) 
+    public GameObject getPrefabForName(string name)
     {
-        foreach (GameObject prefab in plantPrefabList) 
+        foreach (GameObject prefab in plantPrefabList)
         {
             string newName = name.Replace("(Clone)", string.Empty);
             Debug.Log(newName);
-            
-            if (prefab.name == newName) 
+
+            if (prefab.name == newName)
             {
                 return prefab;
             }
