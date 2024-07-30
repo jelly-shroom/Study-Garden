@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
- 
+
 public class StudyTime : MonoBehaviour
 {
     public float timerSeconds = 0.0f;
@@ -12,12 +12,12 @@ public class StudyTime : MonoBehaviour
     private TextMeshProUGUI timer;
     public List<int> milestones = new List<int>();
     public int rewardIntervalMinutes = 3;
- 
+
     private void Start()
     {
         timer = GetComponent<TextMeshProUGUI>();
     }
- 
+
     private void Update()
     {
         timerSeconds += Time.deltaTime;
