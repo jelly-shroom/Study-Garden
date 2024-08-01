@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
         if (currencyCount.GetComponent<Currency>().counter >= plantCost && _gameObj.gameObject.activeSelf == false)
         {
             _gameObj.gameObject.SetActive(true);
-            GameObject.Find("DataPersistenceManager").GetComponent<SaveableUIData>().plantInventoryList.Add(_gameObj.gameObject);
+            GameObject.Find("DataPersistenceManager").GetComponent<SaveableUIData>().plantInventoryList.Add(this._gameObj.gameObject.name);
 
             currencyCount.GetComponent<Currency>().counter -= plantCost;
         }

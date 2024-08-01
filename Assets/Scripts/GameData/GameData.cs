@@ -10,7 +10,7 @@ public class GameData
     public int currencyCount;
 
     public List<Plant> plants;
-    public List<GameObject> plantInventoryList;
+    public List<string> plantInventoryList;
 
     public GameObject[] taskArray;
     public List<string> taskTextList;
@@ -20,7 +20,7 @@ public class GameData
         currencyCount = 0;
 
         plants = new List<Plant>();
-        plantInventoryList = new List<GameObject>();
+        plantInventoryList = new List<string>();
 
         taskArray = new GameObject[0];
         taskTextList = new List<string>();

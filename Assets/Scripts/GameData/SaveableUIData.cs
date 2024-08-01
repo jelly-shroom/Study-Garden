@@ -21,7 +21,7 @@ public class SaveableUIData : MonoBehaviour, IDataPersistence
     public GameObject taskPrefab;
     public GameObject taskParent;
 
-    public List<GameObject> plantInventoryList;
+    public List<string> plantInventoryList;
 
     void Start()
     {
@@ -44,9 +44,22 @@ public class SaveableUIData : MonoBehaviour, IDataPersistence
 
         //loads plant inventory
         this.plantInventoryList = data.plantInventoryList;
-        foreach (GameObject plantUI in data.plantInventoryList)
+        foreach (string plantUIName in data.plantInventoryList)
         {
-            plantUI.gameObject.SetActive(true);
+            Debug.Log("Plant UI Name: " + plantUIName);
+
+            //plantUIName will be disabled by default
+            //need to find the disabled gameobject and set it to active
+
+            //loop through every gameobject with inventory manager script
+            //if the gameobject name is equal to the plantUIName, set it to active
+            foreach (InventoryManager inventory in GameObject.FindObjectsOfType<InventoryManager>(true))
+            {
+                if (inventory.gameObject.name == plantUIName)
+                {
+                    inventory.gameObject.SetActive(true);
+                }
+            }
         }
     }
 

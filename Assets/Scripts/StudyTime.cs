@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class StudyTime : MonoBehaviour
 {
-    public float timerSeconds = 0.0f;
-    private int timerMinutes = 0;
-    private int timerHours = 0;
+    public float timerSeconds;
+    private int timerMinutes;
+    private int timerHours;
     private TextMeshProUGUI timer;
     public List<int> milestones = new List<int>();
     public int rewardIntervalMinutes = 3;
@@ -16,41 +16,37 @@ public class StudyTime : MonoBehaviour
     private void Start()
     {
         timer = GetComponent<TextMeshProUGUI>();
+
+        timerSeconds = 0.0f;
+        timerMinutes = 0;
+        timerHours = 0;
     }
 
     private void Update()
     {
-        timerSeconds += Time.deltaTime;
-
-        // TimeSpan timeSpan = TimeSpan.FromSeconds(timerSeconds);
-        // timer.text = timeSpan.Hours.ToString("00") + ":" + timeSpan.Minutes.ToString("00");
-
-        // if (timeSpan.Minutes % rewardIntervalMinutes == 0 && !rewardGranted)
-        // {
-        //     Debug.Log("Reward!");
-        //     rewardGranted = true;
-        // } else {
-        //     rewardGranted = false;
-        // }
-
-        if (timerSeconds >= 60)
+        if (timer) //while the timer is running
         {
-            timerSeconds = 0.0f;
-            timerMinutes++;
-        }
+            timerSeconds += Time.deltaTime;
 
-        if (timerMinutes >= 60)
-        {
-            timerMinutes = 0;
-            timerHours++;
-        }
+            if (timerSeconds >= 60)
+            {
+                timerSeconds = 0.0f;
+                timerMinutes++;
+            }
 
-        timer.text = timerHours.ToString("00") + ":" + timerMinutes.ToString("00");
+            if (timerMinutes >= 60)
+            {
+                timerMinutes = 0;
+                timerHours++;
+            }
 
-        if (timerMinutes % rewardIntervalMinutes == 0 && timerSeconds == 0)
-        {
-            Debug.Log("Reward!");
-            //need access to data that stores the currency count and add to the data.game file
+            timer.text = timerHours.ToString("00") + ":" + timerMinutes.ToString("00");
+
+            if (timerMinutes % rewardIntervalMinutes == 0 && timerSeconds == 0)
+            {
+                Debug.Log("Reward!");
+                //need access to data that stores the currency count and add to the data.game file
+            }
         }
     }
 
