@@ -10,19 +10,21 @@ public class CurrencyHelper : MonoBehaviour, IDataPersistence
     public GameObject[] currencyCount;
 
     //purchases
-    public int itemCost;
-    [SerializeField] public TextMeshProUGUI itemCost_text;
+    public int plantCost;
+    [SerializeField] public TextMeshProUGUI plantCost_text;
 
     void Start()
     {
         currencyCount = GameObject.FindGameObjectsWithTag("Currency");
 
         string plantName = this.gameObject.name.Replace("_shop", string.Empty);
-        Debug.Log("Plant Name: " + plantName);
 
-        // itemCost = GameObject.Find(plantName).GetComponent<PlantBehavior>().plantCost;
-        itemCost = GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plantPrefabList.Find(obj => obj.name == plantName).GetComponent<PlantBehavior>().plantCost;
-        itemCost_text.text = "" + itemCost;
+        if (GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plantPrefabList.Find(obj => obj.name == plantName))
+        {
+            plantCost = GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plantPrefabList.Find(obj => obj.name == plantName).GetComponent<PlantBehavior>().plantCost;
+            plantCost_text.text = "" + plantCost;
+        }
+
     }
 
     void Update()

@@ -238,7 +238,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   confirmButton: {fileID: 6099006622461991724}
   deleteButton: {fileID: 5712606548729730669}
-  plantCost: 7
+  plantCost: 4
 --- !u!65 &1377892452512057129
 BoxCollider:
   m_ObjectHideFlags: 0

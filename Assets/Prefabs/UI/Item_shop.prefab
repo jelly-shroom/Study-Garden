@@ -295,9 +295,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyGain: 2
-  currencyCount: {fileID: 0}
-  itemCost: 10
-  itemCost_text: {fileID: 74303053032440266}
+  currencyCount:
+  - {fileID: 0}
+  plantCost: 0
+  plantCost_text: {fileID: 74303053032440266}
 --- !u!1 &4195362264428381955
 GameObject:
   m_ObjectHideFlags: 0

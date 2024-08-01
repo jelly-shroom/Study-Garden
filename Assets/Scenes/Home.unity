@@ -1521,6 +1521,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65afc78445ae5452aa1a67d16b0e28c0, type: 3}
   m_PrefabInstance: {fileID: 401935369}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &412844696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 74303053032440266, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+  m_PrefabInstance: {fileID: 7104349462860768955}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &423456895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1931,6 +1942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item2_shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4745861058631193021, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_Name
+      value: plantCost_text
+      objectReference: {fileID: 0}
     - target: {fileID: 5712083275107678804, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2015,6 +2030,10 @@ PrefabInstance:
       propertyPath: itemCost
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6764993849745912908, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: plantCost_text
+      value: 
+      objectReference: {fileID: 1770405557}
     - target: {fileID: 7024742452779377310, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: _gameObj
       value: 
@@ -5692,6 +5711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item3_shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4745861058631193021, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_Name
+      value: plantCost_text
+      objectReference: {fileID: 0}
     - target: {fileID: 5712083275107678804, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6998,6 +7021,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770405557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 74303053032440266, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+  m_PrefabInstance: {fileID: 447617659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1809145393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8969,6 +9003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item1_shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4745861058631193021, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: m_Name
+      value: plantCost_text
+      objectReference: {fileID: 0}
     - target: {fileID: 5712083275107678804, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9053,6 +9091,10 @@ PrefabInstance:
       propertyPath: itemCost
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 6764993849745912908, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
+      propertyPath: plantCost_text
+      value: 
+      objectReference: {fileID: 412844696}
     - target: {fileID: 7024742452779377310, guid: cee67c3d27a554cd78e057765359b84c, type: 3}
       propertyPath: _gameObj
       value: 
