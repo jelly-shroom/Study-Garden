@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlantBehavior : MonoBehaviour
 {
     GameObject dataManagerObj;
+    GameObject gameManager;
     public bool editMode;
     public Vector3 position;
     private GameObject editGardenMenu;
@@ -27,11 +30,9 @@ public class PlantBehavior : MonoBehaviour
 
         dataManagerObj = GameObject.Find("DataPersistenceManager");
         editGardenMenu = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().editGardenMenu.gameObject;
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
 
         position = gameObject.transform.position;
-
-        //set plantCost equal to the cost in the CurrencyHelper script
-        // plantCost = GameObject.Find("DataPersistenceManager").GetComponent<CurrencyHelper>().itemCost;
 
         if (editGardenMenu.activeSelf)
         {
@@ -51,7 +52,7 @@ public class PlantBehavior : MonoBehaviour
     {
         if (editMode == true)
         {
-            //this makes sure that the position gets saved once
+            //this makes sure that the position gets saved only once
             var oneTime = false;
 
             //moving obj and positioning
@@ -74,19 +75,29 @@ public class PlantBehavior : MonoBehaviour
 
             gameObject.transform.position = position;
 
+
+
+            //if the edit menu is closed, save the position
             if (editGardenMenu.activeSelf == false && !oneTime)
             {
                 ConfirmPosition();
+                gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
+
                 oneTime = true;
             }
         }
 
-        CheckClickPlant();
+        //only runs checkclickplant if a plant isnt currently being edited
+        if (gameManager.GetComponent<GameManager>().isPlantBeingEdited == false)
+        {
+            CheckClickPlant();
+        }
     }
+
 
     public void CheckClickPlant()
     {
-        //clicking obj to edit
+        //clicking obj to edit position
         if (Input.GetMouseButtonDown(0))
         {
             _ray = new Ray(_mainCamera.ScreenToWorldPoint(Input.mousePosition), _mainCamera.transform.forward);
@@ -99,6 +110,8 @@ public class PlantBehavior : MonoBehaviour
                     confirmButton.SetActive(true);
                     deleteButton.SetActive(true);
                     editMode = true;
+
+                    gameManager.GetComponent<GameManager>().isPlantBeingEdited = true;
 
                     //deletes the previously saved position so it won't save duplicates
                     //iterate through each of the locations of the plants and delete the one that match
@@ -120,11 +133,15 @@ public class PlantBehavior : MonoBehaviour
         confirmButton.SetActive(false);
         deleteButton.SetActive(false);
         GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plants.Add(new Plant(this.gameObject.name, this.gameObject.transform.position));
+
+        gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
     }
 
     public void DestroyPlantObject()
     {
         Destroy(gameObject);
+
+        gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
     }
 
     public void PlantGrowth()

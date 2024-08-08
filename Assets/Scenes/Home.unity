@@ -4986,6 +4986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   editGardenMenu: {fileID: 1408660648}
+  isPlantBeingEdited: 0
+  boundingBox: {x: 10, y: 0, z: 10}
 --- !u!4 &1225990151
 Transform:
   m_ObjectHideFlags: 0
@@ -5960,7 +5962,7 @@ Transform:
   m_GameObject: {fileID: 1429868628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6418,6 +6420,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8152344155111988922, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: timerSeconds
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: rewardIntervalMinutes
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.data[1]
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.data[2]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.data[3]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.data[4]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595985311974644938, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
+      propertyPath: milestones.Array.data[5]
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9105,7 +9143,7 @@ PrefabInstance:
       objectReference: {fileID: 402673730021653043, guid: babef065beb2a40c38ba19a62bcbc7c8, type: 3}
     - target: {fileID: 6568589247609919041, guid: 0772806ec7a794fe1bfc0356dee0a76e, type: 3}
       propertyPath: spawnLocation.x
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6568589247609919041, guid: 0772806ec7a794fe1bfc0356dee0a76e, type: 3}
       propertyPath: spawnLocation.y
@@ -9113,7 +9151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6568589247609919041, guid: 0772806ec7a794fe1bfc0356dee0a76e, type: 3}
       propertyPath: spawnLocation.z
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6665904551852644522, guid: 0772806ec7a794fe1bfc0356dee0a76e, type: 3}
       propertyPath: _gameObj
@@ -9314,7 +9352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354792924164534740, guid: 2b8771ab81016d04ebc02f7dff77faac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6354792924164534740, guid: 2b8771ab81016d04ebc02f7dff77faac, type: 3}
       propertyPath: m_LocalPosition.z

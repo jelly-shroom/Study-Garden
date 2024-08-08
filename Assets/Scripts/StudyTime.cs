@@ -13,6 +13,8 @@ public class StudyTime : MonoBehaviour
     public List<int> milestones = new List<int>();
     public int rewardIntervalMinutes = 3;
 
+    private CurrencyHelper currencyCounter;
+
     private void Start()
     {
         timer = GetComponent<TextMeshProUGUI>();
@@ -20,14 +22,16 @@ public class StudyTime : MonoBehaviour
         timerSeconds = 0.0f;
         timerMinutes = 0;
         timerHours = 0;
+
+        currencyCounter = FindAnyObjectByType<CurrencyHelper>();
     }
 
     private void Update()
     {
         if (timer) //while the timer is running
         {
+            //timer function
             timerSeconds += Time.deltaTime;
-
             if (timerSeconds >= 60)
             {
                 timerSeconds = 0.0f;
@@ -39,20 +43,24 @@ public class StudyTime : MonoBehaviour
                 timerMinutes = 0;
                 timerHours++;
             }
-
             timer.text = timerHours.ToString("00") + ":" + timerMinutes.ToString("00");
 
+
+            //reward with currency after set interval of time
             if (timerMinutes % rewardIntervalMinutes == 0 && timerSeconds == 0)
             {
-                Debug.Log("Reward!");
-                //need access to data that stores the currency count and add to the data.game file
+                //Debug.Log("Reward!");
+                currencyCounter.currencyCount[0].GetComponent<Currency>().counter += 3;
+            }
+
+            //milestone reward
+            foreach (int milestone in milestones)
+            {
+                if (timerMinutes == milestone && timerSeconds == 0)
+                {
+                    currencyCounter.currencyCount[0].GetComponent<Currency>().counter += 5;
+                }
             }
         }
     }
-
-    //to set up reward system for studying
-    //milestones are manually added
-    //need: give bonus points based on whether the timerSpan is equal to milestone
-
-
 }
