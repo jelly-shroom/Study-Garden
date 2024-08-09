@@ -11,6 +11,7 @@ public class PlantBehavior : MonoBehaviour
     GameObject gameManager;
     public bool editMode;
     public Vector3 position;
+    private GameObject spawnPoint;
     private GameObject editGardenMenu;
     public GameObject confirmButton;
     public GameObject deleteButton;
@@ -31,6 +32,7 @@ public class PlantBehavior : MonoBehaviour
         dataManagerObj = GameObject.Find("DataPersistenceManager");
         editGardenMenu = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().editGardenMenu.gameObject;
         gameManager = GameObject.FindGameObjectWithTag("GameController");
+        spawnPoint = GameObject.FindGameObjectWithTag("Spawn");
 
         position = gameObject.transform.position;
 
@@ -52,32 +54,60 @@ public class PlantBehavior : MonoBehaviour
     {
         if (editMode == true)
         {
-            //this makes sure that the position gets saved only once
+            // This makes sure that the position gets saved only once
             var oneTime = false;
 
-            //moving obj and positioning
+            Vector3 newPosition = position;
+
+            // Moving obj and positioning
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                position += Vector3.right;
+                newPosition += Vector3.right;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                position += Vector3.left;
+                newPosition += Vector3.left;
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                position += Vector3.forward;
+                newPosition += Vector3.forward;
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                position -= Vector3.forward;
+                newPosition -= Vector3.forward;
             }
 
-            gameObject.transform.position = position;
+            // Check if the new position is within the bounding box
+            if (newPosition.x < 0 || newPosition.x > gameManager.GetComponent<GameManager>().boundingBox.x ||
+                newPosition.z < 0 || newPosition.z > gameManager.GetComponent<GameManager>().boundingBox.z)
+            {
+                Debug.Log("New position is out of bounds: " + newPosition);
+                return;
+            }
 
+            // Check if the new position is occupied by another plant
+            bool positionOccupied = false;
+            foreach (Transform child in spawnPoint.transform)
+            {
+                if (child.position == newPosition && child != transform) // exclude self
+                {
+                    positionOccupied = true;
+                    break;
+                }
+            }
 
+            // If the position is not occupied, move the plant
+            if (!positionOccupied)
+            {
+                position = newPosition;
+                gameObject.transform.position = position;
+            }
+            else
+            {
+                Debug.Log("Position occupied, can't move to " + newPosition);
+            }
 
-            //if the edit menu is closed, save the position
+            // If the edit menu is closed, save the position
             if (editGardenMenu.activeSelf == false && !oneTime)
             {
                 ConfirmPosition();
@@ -87,13 +117,12 @@ public class PlantBehavior : MonoBehaviour
             }
         }
 
-        //only runs checkclickplant if a plant isnt currently being edited
+        // Only runs CheckClickPlant if a plant isn't currently being edited
         if (gameManager.GetComponent<GameManager>().isPlantBeingEdited == false)
         {
             CheckClickPlant();
         }
     }
-
 
     public void CheckClickPlant()
     {

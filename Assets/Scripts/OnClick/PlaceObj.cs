@@ -19,10 +19,10 @@ public class PlaceObj : MonoBehaviour
 
     public void AddObject()
     {
-        //check if there are plants active
+        // Check if there are plants active
         if (spawnPoint.transform.childCount != 0)
         {
-            //loop through all children of spawn point and if editMode is true, confirm position of child
+            // Loop through all children of spawn point and if editMode is true, confirm position of child
             foreach (Transform child in spawnPoint.transform)
             {
                 if (child.GetComponent<PlantBehavior>().editMode == true)
@@ -33,33 +33,54 @@ public class PlaceObj : MonoBehaviour
         }
         gameManager.GetComponent<GameManager>().isPlantBeingEdited = true;
 
-
-        //spwan object in blank location
-        //check if location is empty. if empty, spawn. if not, increase x or z by 1 and check again
-        //x and z locations should never exceed bounding box
+        // Start with an initial spawn location
         spawnLocation = new Vector3(0, 1, 0);
-        foreach (Transform child in spawnPoint.transform)
-        {
-            if (child.position == spawnLocation)
-            {
-                spawnLocation.x += 1;
-                if (spawnLocation.x > boundingBox.x)
-                {
-                    spawnLocation.x = 0;
-                    spawnLocation.z += 1;
-                    if (spawnLocation.z > boundingBox.z)
-                    {
-                        Debug.Log("No more space to plant");
-                        gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
 
-                        return;
+        bool locationFound = false;
+
+        // Iterate over possible spawn locations within the bounding box
+        for (float z = 0; z <= boundingBox.z; z += 1.0f)
+        {
+            for (float x = 0; x <= boundingBox.x; x += 1.0f)
+            {
+                Vector3 potentialLocation = new Vector3(x, 1, z);
+                bool locationOccupied = false;
+
+                // Check if any object is at the potential location
+                foreach (Transform child in spawnPoint.transform)
+                {
+                    if (child.position == potentialLocation)
+                    {
+                        locationOccupied = true;
+                        break;
                     }
                 }
+
+                // If the location is not occupied, use it for spawning
+                if (!locationOccupied)
+                {
+                    spawnLocation = potentialLocation;
+                    locationFound = true;
+                    break;
+                }
+            }
+
+            if (locationFound)
+            {
+                break;
             }
         }
 
+        // If no location was found, log a message and stop the process
+        if (!locationFound)
+        {
+            Debug.Log("No more space to plant");
+            gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
+            return;
+        }
 
+        // Instantiate the new plant at the found location
         Instantiate(plantPrefab, spawnLocation, Quaternion.identity, spawnPoint.transform);
-
     }
+
 }
