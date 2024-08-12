@@ -10,7 +10,7 @@ public class CurrencyHelper : MonoBehaviour, IDataPersistence
     public GameObject[] currencyCount;
 
     //purchases
-    public int plantCost;
+    private int plantCost;
     [SerializeField] public TextMeshProUGUI plantCost_text;
 
     void Start()

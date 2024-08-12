@@ -393,6 +393,7 @@
 "Assets/Scripts/OnClick/ShowHideUI.cs"
 "Assets/Scripts/OnClick/TaskController.cs"
 "Assets/Scripts/PlantBehavior.cs"
+"Assets/Scripts/SetName.cs"
 "Assets/Scripts/StudyTime.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"

@@ -85,27 +85,9 @@ public class PlantBehavior : MonoBehaviour
                 return;
             }
 
-            // Check if the new position is occupied by another plant
-            bool positionOccupied = false;
-            foreach (Transform child in spawnPoint.transform)
-            {
-                if (child.position == newPosition && child != transform) // exclude self
-                {
-                    positionOccupied = true;
-                    break;
-                }
-            }
-
-            // If the position is not occupied, move the plant
-            if (!positionOccupied)
-            {
-                position = newPosition;
-                gameObject.transform.position = position;
-            }
-            else
-            {
-                Debug.Log("Position occupied, can't move to " + newPosition);
-            }
+            // Move the plant regardless of occupation
+            position = newPosition;
+            gameObject.transform.position = position;
 
             // If the edit menu is closed, save the position
             if (editGardenMenu.activeSelf == false && !oneTime)
@@ -123,7 +105,33 @@ public class PlantBehavior : MonoBehaviour
             CheckClickPlant();
         }
     }
+    public void ConfirmPosition()
+    {
+        // Check if the current position is occupied by another plant
+        bool positionOccupied = false;
+        foreach (Transform child in spawnPoint.transform)
+        {
+            if (child.position == position && child != transform) // exclude self
+            {
+                positionOccupied = true;
+                break;
+            }
+        }
 
+        if (!positionOccupied)
+        {
+            editMode = false;
+            confirmButton.SetActive(false);
+            deleteButton.SetActive(false);
+            GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plants.Add(new Plant(this.gameObject.name, this.gameObject.transform.position));
+
+            gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
+        }
+        else
+        {
+            Debug.Log("Cannot confirm position, another plant is occupying this spot: " + position);
+        }
+    }
     public void CheckClickPlant()
     {
         //clicking obj to edit position
@@ -154,23 +162,6 @@ public class PlantBehavior : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void ConfirmPosition()
-    {
-        editMode = false;
-        confirmButton.SetActive(false);
-        deleteButton.SetActive(false);
-        GameObject.Find("DataPersistenceManager").GetComponent<SaveableWorldData>().plants.Add(new Plant(this.gameObject.name, this.gameObject.transform.position));
-
-        gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
-    }
-
-    public void DestroyPlantObject()
-    {
-        Destroy(gameObject);
-
-        gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
     }
 
     public void PlantGrowth()

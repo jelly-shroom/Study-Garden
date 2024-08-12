@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 1090400013348013602}
   - component: {fileID: 757512314326325745}
   - component: {fileID: 6764993849745912908}
+  - component: {fileID: 582669483565340114}
   m_Layer: 5
   m_Name: Item_shop
   m_TagString: Untagged
@@ -297,8 +298,20 @@ MonoBehaviour:
   currencyGain: 2
   currencyCount:
   - {fileID: 0}
-  plantCost: 0
   plantCost_text: {fileID: 74303053032440266}
+--- !u!114 &582669483565340114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4113418266314803562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4197f1c456d465eadbf82919f5d089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
 --- !u!1 &4195362264428381955
 GameObject:
   m_ObjectHideFlags: 0

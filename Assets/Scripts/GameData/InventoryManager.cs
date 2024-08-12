@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] public GameObject _gameObj;
     //get currencyCount from Currency Helper script
     private GameObject currencyCount;
-    public int plantCost;
+    private int plantCost;
+
 
     public void PurchaseInventory()
     {

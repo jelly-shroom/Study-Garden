@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4570170723014666133}
   - component: {fileID: 6568589247609919041}
   - component: {fileID: 6665904551852644522}
+  - component: {fileID: 3108778500897037430}
   m_Layer: 5
   m_Name: Item_inventory
   m_TagString: Untagged
@@ -147,8 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8a009b9c81840eb9f3f80cd9a1393e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
-  prefab: {fileID: -927199367670048503, guid: e199023d0aa5ff941bf9b82a4466efa6, type: 3}
+  plantPrefab: {fileID: 0}
   spawnLocation: {x: 1, y: 1, z: 1}
 --- !u!114 &6665904551852644522
 MonoBehaviour:
@@ -163,6 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObj: {fileID: 0}
+--- !u!114 &3108778500897037430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606512572655736444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4197f1c456d465eadbf82919f5d089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
 --- !u!1 &5355218491548845709
 GameObject:
   m_ObjectHideFlags: 0
