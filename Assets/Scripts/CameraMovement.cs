@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class CameraMovement : MonoBehaviour
@@ -27,36 +28,40 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        //camera zoom linked to scrollwheel and updates accordingly
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        zoom -= scroll * zoomMultiplier;
-        zoom = Mathf.Clamp(zoom, zoomMin, zoomMax);
-        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTimeZoom);
-
-        //registers clicks as dragging
-        if (Input.GetMouseButton(0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            differenceMvt = cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position;
-            if (drag == false)
+            //camera zoom linked to scrollwheel and updates accordingly
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            zoom -= scroll * zoomMultiplier;
+            zoom = Mathf.Clamp(zoom, zoomMin, zoomMax);
+            cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTimeZoom);
+
+            //registers clicks as dragging
+            if (Input.GetMouseButton(0))
             {
-                drag = true;
-                camPosOriginal = cam.ScreenToWorldPoint(Input.mousePosition);
+                differenceMvt = cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position;
+                if (drag == false)
+                {
+                    drag = true;
+                    camPosOriginal = cam.ScreenToWorldPoint(Input.mousePosition);
+                }
+            }
+            else
+            {
+                drag = false;
+            }
+            //when dragging, move the camera
+            if (drag)
+            {
+                cam.transform.position = camPosOriginal - differenceMvt;
+            }
+            //if right clocks, resets the camera position
+            if (Input.GetMouseButton(1))
+            {
+                cam.transform.position = posOriginal;
             }
         }
-        else
-        {
-            drag = false;
-        }
-        //when dragging, move the camera
-        if (drag)
-        {
-            cam.transform.position = camPosOriginal-differenceMvt;
-        }
-        //if right clocks, resets the camera position
-        if (Input.GetMouseButton(1))
-        {
-            cam.transform.position = posOriginal;
-        }
+
     }
 
 

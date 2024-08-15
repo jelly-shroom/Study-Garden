@@ -164,6 +164,12 @@ public class PlantBehavior : MonoBehaviour
         }
     }
 
+    public void DestroyPlantObject()
+    {
+        Destroy(this.gameObject);
+        gameManager.GetComponent<GameManager>().isPlantBeingEdited = false;
+    }
+
     public void PlantGrowth()
     {
         //need to access amount of time passed in the study timer since the plant was instantiated
