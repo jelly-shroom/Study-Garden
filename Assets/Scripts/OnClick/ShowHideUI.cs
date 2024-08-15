@@ -9,7 +9,6 @@ public class ShowHideUI : MonoBehaviour
 {
     [SerializeField] public GameObject _gameObj;
     public TextMeshProUGUI buttonText;
-    int counter;
 
     public void ShowHide()
     {

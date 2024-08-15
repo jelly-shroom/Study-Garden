@@ -63,4 +63,16 @@ public class StudyTime : MonoBehaviour
             }
         }
     }
+
+    private void OnDisable()
+    {
+        // Reset the timer when this GameObject is disabled
+        timerSeconds = 0.0f;
+        timerMinutes = 0;
+        timerHours = 0;
+        if (timer != null)
+        {
+            timer.text = "00:00";
+        }
+    }
 }
