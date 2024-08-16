@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class StudyTime : MonoBehaviour
 {
-    public float timerSeconds;
+    [SerializeField] float timerSeconds;
     private int timerMinutes;
     private int timerHours;
     private TextMeshProUGUI timer;
-    public List<int> milestones = new List<int>();
-    public int rewardIntervalMinutes = 3;
+    [SerializeField] List<int> milestones = new List<int>();
+    [SerializeField] int rewardIntervalMinutes = 3;
 
     private CurrencyHelper currencyCounter;
 
@@ -49,7 +49,7 @@ public class StudyTime : MonoBehaviour
             //reward with currency after set interval of time
             if (timerMinutes % rewardIntervalMinutes == 0 && timerSeconds == 0)
             {
-                //Debug.Log("Reward!");
+                PopUpManager.Instance.ShowPopup("You have earned 3 currency!");
                 currencyCounter.currencyCount[0].GetComponent<Currency>().counter += 3;
             }
 
@@ -58,6 +58,7 @@ public class StudyTime : MonoBehaviour
             {
                 if (timerMinutes == milestone && timerSeconds == 0)
                 {
+                    PopUpManager.Instance.ShowPopup("Congratulations on meeting a milestone! You have earned 5 currency.");
                     currencyCounter.currencyCount[0].GetComponent<Currency>().counter += 5;
                 }
             }

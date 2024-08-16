@@ -9,7 +9,7 @@ public class ButtonImageTint : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private Image itemImage;
     public Color pressedColor = Color.gray;
     private Color originalColor;
-    public float fadeDuration = 0.1f; // Duration for the fade
+    public float fadeDuration = 0.1f;
 
     private Coroutine colorChangeCoroutine;
 
@@ -38,7 +38,6 @@ public class ButtonImageTint : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             StopCoroutine(colorChangeCoroutine);
         }
 
-        // Start the fade to the pressed color
         colorChangeCoroutine = StartCoroutine(FadeToColor(pressedColor));
     }
 
@@ -50,13 +49,12 @@ public class ButtonImageTint : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             StopCoroutine(colorChangeCoroutine);
         }
 
-        // Start the fade back to the original color
         colorChangeCoroutine = StartCoroutine(FadeToColor(originalColor));
     }
 
     private void OnDisable()
     {
-        // Ensure that the color resets if the button is disabled (e.g., when switching scenes)
+        // Ensure that the color resets if the button is disabled
         if (colorChangeCoroutine != null)
         {
             StopCoroutine(colorChangeCoroutine);

@@ -8,7 +8,8 @@ using Unity.Mathematics;
 
 public class TaskController : MonoBehaviour
 {
-    public GameObject prefab;
+    [SerializeField] GameObject prefab;
+
     private GameObject taskList;
 
     void Start()
@@ -20,6 +21,10 @@ public class TaskController : MonoBehaviour
         if (taskList.transform.childCount < 9)
         {
             Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
+        }
+        else
+        {
+            PopUpManager.Instance.ShowPopup("You have reached the maximum number of tasks.");
         }
     }
     public void DestroyObject()

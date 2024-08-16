@@ -13,8 +13,8 @@ public class PlantBehavior : MonoBehaviour
     public Vector3 position;
     private GameObject spawnPoint;
     private GameObject editGardenMenu;
-    public GameObject confirmButton;
-    public GameObject deleteButton;
+    [SerializeField] GameObject confirmButton;
+    [SerializeField] GameObject deleteButton;
 
     private Camera _mainCamera;
     private Renderer _renderer;

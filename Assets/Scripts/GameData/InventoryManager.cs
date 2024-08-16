@@ -18,7 +18,15 @@ public class InventoryManager : MonoBehaviour
         currencyCount = GameObject.FindGameObjectsWithTag("Currency")[0];
         plantCost = this.gameObject.GetComponent<PlaceObj>().plantPrefab.GetComponent<PlantBehavior>().plantCost;
 
-        if (currencyCount.GetComponent<Currency>().counter >= plantCost && _gameObj.gameObject.activeSelf == false)
+        if (currencyCount.GetComponent<Currency>().counter < plantCost)
+        {
+            PopUpManager.Instance.ShowPopup("You do not have enough currency to purchase this item.");
+        }
+        else if (_gameObj.gameObject.activeSelf == true)
+        {
+            PopUpManager.Instance.ShowPopup("You already have this item in your inventory.");
+        }
+        else
         {
             _gameObj.gameObject.SetActive(true);
             GameObject.Find("DataPersistenceManager").GetComponent<SaveableUIData>().plantInventoryList.Add(this._gameObj.gameObject.name);
