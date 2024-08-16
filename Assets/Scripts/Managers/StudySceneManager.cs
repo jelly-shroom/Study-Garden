@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class StudySceneController : MonoBehaviour
+public class StudySceneManager : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     public AudioClip[] audioClipList;

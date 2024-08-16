@@ -23,7 +23,7 @@ public class HomeEnvironmentManager : MonoBehaviour
 
     void Start()
     {
-        studyScene = GameObject.FindObjectOfType<StudySceneController>(true).gameObject;
+        studyScene = GameObject.FindObjectOfType<StudySceneManager>(true).gameObject;
         DetermineTimeOfDay();
         ChangeCameraBackground();
         PlayAudioClip();
