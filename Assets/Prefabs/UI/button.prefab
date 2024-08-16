@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 933112591015717787}
   - component: {fileID: 2052908608260119456}
   - component: {fileID: 823982931760095641}
+  - component: {fileID: 2013931284095335391}
   m_Layer: 5
   m_Name: button
   m_TagString: Untagged
@@ -330,9 +331,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObj: {fileID: 4162920572089685356}
-  _text1: confirm
-  _text2: edit
   buttonText: {fileID: 8186495355488378564}
+--- !u!114 &2013931284095335391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4162920572089685356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5361df69f3624e72bf073643dabccbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  fadeDuration: 0.1
 --- !u!1 &5024736223412716556
 GameObject:
   m_ObjectHideFlags: 0

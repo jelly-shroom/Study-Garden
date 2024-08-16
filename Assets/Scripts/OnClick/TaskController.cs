@@ -9,10 +9,18 @@ using Unity.Mathematics;
 public class TaskController : MonoBehaviour
 {
     public GameObject prefab;
+    private GameObject taskList;
 
+    void Start()
+    {
+        taskList = this.gameObject;
+    }
     public void AddObject()
     {
-        Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
+        if (taskList.transform.childCount < 9)
+        {
+            Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
+        }
     }
     public void DestroyObject()
     {

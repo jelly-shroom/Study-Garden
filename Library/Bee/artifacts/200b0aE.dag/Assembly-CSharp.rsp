@@ -389,6 +389,7 @@
 "Assets/Scripts/GameData/SaveableUIData.cs"
 "Assets/Scripts/GameData/SaveableWorldData.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/OnClick/ButtonImageTint.cs"
 "Assets/Scripts/OnClick/PlaceObj.cs"
 "Assets/Scripts/OnClick/SceneChange.cs"
 "Assets/Scripts/OnClick/ShowHideUI.cs"

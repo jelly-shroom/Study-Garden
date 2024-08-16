@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 757512314326325745}
   - component: {fileID: 6764993849745912908}
   - component: {fileID: 582669483565340114}
+  - component: {fileID: 4568577073958657062}
   m_Layer: 5
   m_Name: Item_shop
   m_TagString: Untagged
@@ -174,7 +175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -723, y: 146}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 270, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1971559525914455977
@@ -312,6 +313,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
+--- !u!114 &4568577073958657062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4113418266314803562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5361df69f3624e72bf073643dabccbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &4195362264428381955
 GameObject:
   m_ObjectHideFlags: 0

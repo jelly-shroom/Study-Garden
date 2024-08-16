@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 5862099788192549352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.88, y: 1.88, z: 1.88}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2769074184068338362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 216}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 179.5}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &406089002090282462
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 897d279b3179d458c88ec6f9d4a5d691, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15e16ad9c552348db826ff8082cbade4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 257061013354328014}
   - component: {fileID: 1231863151619613081}
   m_Layer: 5
-  m_Name: study_text
+  m_Name: timer_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Study
+  m_text: Focus timer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -167,13 +167,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 48
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 4514417633901684551}
   - component: {fileID: 1119491555431836600}
   - component: {fileID: 7443466360759505030}
+  - component: {fileID: 1762781858978107329}
   m_Layer: 5
   m_Name: timer
   m_TagString: Untagged
@@ -239,7 +240,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1916091922105947254}
   - {fileID: 3702532767774586149}
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7443466360759505030}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShowHideUI, Assembly-CSharp
         m_MethodName: ShowHide
         m_Mode: 1
@@ -356,7 +357,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb03af270abf4d07901d41116478a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameObj: {fileID: 6397162426760553373, guid: 74f9d32bd1e194c9fb2923df22613244, type: 3}
-  _text1: 
-  _text2: 
+  _gameObj: {fileID: 9010930795218469102}
   buttonText: {fileID: 0}
+--- !u!114 &1762781858978107329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010930795218469102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5361df69f3624e72bf073643dabccbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  fadeDuration: 0.1
