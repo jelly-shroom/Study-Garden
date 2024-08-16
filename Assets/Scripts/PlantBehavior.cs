@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +22,9 @@ public class PlantBehavior : MonoBehaviour
     private RaycastHit _hit;
 
     public int plantCost;
+
+    private Vector3 initialMousePosition;
+    private float dragThreshold = 10f; // Pixels threshold to consider it a drag vs. a click
 
     void Start()
     {
@@ -102,9 +104,28 @@ public class PlantBehavior : MonoBehaviour
         // Only runs CheckClickPlant if a plant isn't currently being edited
         if (gameManager.GetComponent<GameManager>().isPlantBeingEdited == false)
         {
-            CheckClickPlant();
+            HandleClickPlant();
         }
     }
+
+    private void HandleClickPlant()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            initialMousePosition = Input.mousePosition; // Record the initial mouse position
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            // Check if the mouse moved beyond the drag threshold
+            if (Vector3.Distance(initialMousePosition, Input.mousePosition) <= dragThreshold)
+            {
+                // If within the drag threshold, it's a valid click
+                CheckClickPlant();
+            }
+        }
+    }
+
     public void ConfirmPosition()
     {
         // Check if the current position is occupied by another plant
@@ -132,32 +153,30 @@ public class PlantBehavior : MonoBehaviour
             Debug.Log("Cannot confirm position, another plant is occupying this spot: " + position);
         }
     }
+
     public void CheckClickPlant()
     {
-        //clicking obj to edit position
-        if (Input.GetMouseButtonDown(0))
+        // Clicking obj to edit position
+        _ray = new Ray(_mainCamera.ScreenToWorldPoint(Input.mousePosition), _mainCamera.transform.forward);
+
+        if (Physics.Raycast(_ray, out _hit, 1000f))
         {
-            _ray = new Ray(_mainCamera.ScreenToWorldPoint(Input.mousePosition), _mainCamera.transform.forward);
-
-            if (Physics.Raycast(_ray, out _hit, 1000f))
+            if (_hit.transform == transform && editGardenMenu.activeSelf)
             {
-                if (_hit.transform == transform && editGardenMenu.activeSelf)
+                Debug.Log("clicked " + gameObject.name);
+                confirmButton.SetActive(true);
+                deleteButton.SetActive(true);
+                editMode = true;
+
+                gameManager.GetComponent<GameManager>().isPlantBeingEdited = true;
+
+                // Deletes the previously saved position so it won't save duplicates
+                // Iterate through each of the locations of the plants and delete the one that matches
+                foreach (Plant plant in dataManagerObj.GetComponent<SaveableWorldData>().plants.ToList())
                 {
-                    Debug.Log("clicked " + gameObject.name);
-                    confirmButton.SetActive(true);
-                    deleteButton.SetActive(true);
-                    editMode = true;
-
-                    gameManager.GetComponent<GameManager>().isPlantBeingEdited = true;
-
-                    //deletes the previously saved position so it won't save duplicates
-                    //iterate through each of the locations of the plants and delete the one that match
-                    foreach (Plant plant in dataManagerObj.GetComponent<SaveableWorldData>().plants.ToList())
+                    if (plant.position == gameObject.transform.position)
                     {
-                        if (plant.position == gameObject.transform.position)
-                        {
-                            dataManagerObj.GetComponent<SaveableWorldData>().plants.Remove(plant);
-                        }
+                        dataManagerObj.GetComponent<SaveableWorldData>().plants.Remove(plant);
                     }
                 }
             }
@@ -172,7 +191,7 @@ public class PlantBehavior : MonoBehaviour
 
     public void PlantGrowth()
     {
-        //need to access amount of time passed in the study timer since the plant was instantiated
-        //if current seconds/minutes/hours - seconds/minutes/hours when instantiated = [public int], replace mesh with another
+        // Need to access amount of time passed in the study timer since the plant was instantiated
+        // If current seconds/minutes/hours - seconds/minutes/hours when instantiated = [public int], replace mesh with another
     }
 }
