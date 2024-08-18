@@ -5,16 +5,26 @@ using UnityEngine.Video;
 public class StudySceneManager : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    public AudioClip[] audioClipList;
+    private AudioClip[] audioClipList;
     private int audioClipIndex = 0;
     private Coroutine audioCoroutine;
 
     [SerializeField] VideoPlayer videoPlayer;
-    public VideoClip[] videoClipList;
+    private VideoClip[] videoClipList;
     private int videoClipIndex = 0;
 
     void OnEnable()
     {
+        audioClipList = Resources.LoadAll<AudioClip>("Audio/Study");
+        videoClipList = Resources.LoadAll<VideoClip>("bg");
+
+        // Make sure there are clips to play
+        if (audioClipList.Length == 0 || videoClipList.Length == 0)
+        {
+            Debug.LogWarning("No audio or video clips found in the specified folders.");
+            return;
+        }
+
         audioClipIndex = Random.Range(0, audioClipList.Length);
         videoClipIndex = Random.Range(0, videoClipList.Length);
 
